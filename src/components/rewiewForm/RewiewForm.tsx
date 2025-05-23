@@ -1,5 +1,3 @@
-import React from 'react';
-
 function RewiewForm() {
   return (
     <form className="reviews__form form" action="#" method="post">
