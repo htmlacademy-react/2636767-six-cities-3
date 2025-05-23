@@ -5,7 +5,7 @@ interface Props {
 }
 
 function App({ offersCount }: Props) {
-  return <MainPage offersCount={offersCount} logged={true} />;
+  return <MainPage offersCount={offersCount} logged />;
 }
 
 export default App;

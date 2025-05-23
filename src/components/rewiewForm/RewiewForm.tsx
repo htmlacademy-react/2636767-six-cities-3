@@ -20,7 +20,7 @@ function RewiewForm() {
           title="perfect"
         >
           <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
+            <use xlinkHref="#icon-star"/>
           </svg>
         </label>
 
@@ -37,7 +37,7 @@ function RewiewForm() {
           title="good"
         >
           <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
+            <use xlinkHref="#icon-star"/>
           </svg>
         </label>
 
@@ -54,7 +54,7 @@ function RewiewForm() {
           title="not bad"
         >
           <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
+            <use xlinkHref="#icon-star"/>
           </svg>
         </label>
 
@@ -71,7 +71,7 @@ function RewiewForm() {
           title="badly"
         >
           <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
+            <use xlinkHref="#icon-star"/>
           </svg>
         </label>
 
@@ -88,7 +88,7 @@ function RewiewForm() {
           title="terribly"
         >
           <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
+            <use xlinkHref="#icon-star"/>
           </svg>
         </label>
       </div>
@@ -97,7 +97,7 @@ function RewiewForm() {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-      ></textarea>
+      />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set{' '}

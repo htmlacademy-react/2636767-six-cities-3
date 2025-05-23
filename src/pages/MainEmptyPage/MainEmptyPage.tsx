@@ -8,7 +8,7 @@ interface MainEmptyPageProps {
 function MainEmptyPage({ logged }: MainEmptyPageProps) {
   return (
     <div className="page page--gray page--main">
-      <Header active={true} logged={logged} />
+      <Header active logged={logged} />
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>
         <Navigation />
