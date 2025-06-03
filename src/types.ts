@@ -2,6 +2,7 @@ export type TNavItem = {
   id: number;
   name: string;
   active: boolean;
+  url: string;
 };
 
 export type TCard = {

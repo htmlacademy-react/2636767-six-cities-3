@@ -2,7 +2,7 @@ import Header from '../../components/header/Header';
 import Navigation from '../../components/navigation/Navigation';
 import PlaceCard from '../../components/placeCard/PlaceCard';
 import Sorting from '../../components/sorting/Sorting';
-import { cards } from '../../const';
+import { cards } from '../../mockData';
 
 interface MainPageProps {
   logged: boolean;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/App';
-import { offersCount } from './const';
+import { offersCount } from './mockData';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
