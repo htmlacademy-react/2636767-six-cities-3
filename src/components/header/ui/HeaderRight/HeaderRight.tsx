@@ -1,11 +1,13 @@
+import { AuthorizationStatus } from "../../../../const";
+
 interface HeaderRightProps {
-  logged: boolean;
+  authStatus: AuthorizationStatus;
 }
 
-function HeaderRight({ logged }: HeaderRightProps) {
+function HeaderRight({ authStatus }: HeaderRightProps) {
   return (
     <nav className="header__nav">
-      {logged ? (
+      {authStatus === AuthorizationStatus.Auth ? (
         <ul className="header__nav-list">
           <li className="header__nav-item user">
             <a className="header__nav-link header__nav-link--profile" href="#">
