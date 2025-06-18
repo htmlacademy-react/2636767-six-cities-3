@@ -1,5 +1,23 @@
+.not-found-page--container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-page--404,
+.not-found-page--title {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.not-found-page--title {
+    padding-bottom: 20px;
+}
+
 .link-to-main {
-    color: #4481c3;
-    font-weight: 600;
-    padding-left: 20px;
+  color: #4481c3;
+  font-weight: 600;
 }
