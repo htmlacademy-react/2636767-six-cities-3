@@ -8,10 +8,7 @@ import PrivateRoute from '../privateRoute/PrivateRoute';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Layout from '../layout/Layout';
 
-
 function App() {
-  const logged = true;
-
   return (
     <BrowserRouter>
       <Routes>
@@ -25,14 +22,14 @@ function App() {
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute logged={logged}>
+              <PrivateRoute authStatus={AuthorizationStatus.Auth}>
                 <FavoritesPage />
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.Offer}
-            element={<OfferPage logged={logged} />}
+            element={<OfferPage authStatus={AuthorizationStatus.Auth} />}
           />
           <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
         </Route>
@@ -42,4 +39,3 @@ function App() {
 }
 
 export default App;
-

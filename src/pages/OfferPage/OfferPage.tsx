@@ -1,10 +1,11 @@
 import RewiewForm from '../../components/rewiewForm/RewiewForm';
+import { AuthorizationStatus } from '../../const';
 
 interface OfferPageProps {
-  logged: boolean;
+  authStatus: AuthorizationStatus;
 }
 
-function OfferPage({ logged }: OfferPageProps) {
+function OfferPage({ authStatus }: OfferPageProps) {
   return (
     <main className='page__main page__main--offer'>
       <section className='offer'>
@@ -171,7 +172,7 @@ function OfferPage({ logged }: OfferPageProps) {
                   </div>
                 </li>
               </ul>
-              {logged && <RewiewForm />}
+              {authStatus === AuthorizationStatus.Auth && <RewiewForm />}
             </section>
           </div>
         </div>
