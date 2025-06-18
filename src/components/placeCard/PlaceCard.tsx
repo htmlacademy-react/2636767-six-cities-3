@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TOffer } from '../../types';
 
 interface PlaceCardProps {
@@ -5,8 +6,14 @@ interface PlaceCardProps {
 }
 
 function PlaceCard({ offer }: PlaceCardProps) {
+  const [offerId, setOfferId] = useState<string>('');
+
+  const onActivePlace = (offer: TOffer) => {
+    setOfferId(offer.id);
+  }
+
   return (
-    <article className='cities__card place-card'>
+    <article className='cities__card place-card' onMouseEnter={() => onActivePlace(offer)}>
       {offer.isPremium && (
         <div className='place-card__mark'>
           <span>Premium</span>
