@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
 import Navigation from '../../components/navigation/Navigation';
-import PlaceCard from '../../components/placeCard/PlaceCard';
-import Sorting from '../../components/sorting/Sorting';
 import { mockOffersList } from '../../mockData';
 import { useEffect, useState } from 'react';
 import { TOffer } from '../../types';
