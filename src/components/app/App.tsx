@@ -1,17 +1,15 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import MainPage from '../../pages/MainPage/MainPage';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import FavoritesPage from '../../pages/FavoritesPage/FavoritesPage';
 import OfferPage from '../../pages/OfferPage/OfferPage';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import Layout from '../layout/Layout';
 
-interface Props {
-  offersCount: number;
-}
 
-function App({ offersCount }: Props) {
+function App() {
   const logged = true;
 
   return (
@@ -19,22 +17,29 @@ function App({ offersCount }: Props) {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage offersCount={offersCount} logged={logged} />}
-        />
-        <Route path={AppRoute.Login} element={<LoginPage />} />
-        <Route
-          path={AppRoute.Favorites}
-          element={
-            <PrivateRoute logged={logged}>
-              <FavoritesPage logged={logged} />
-            </PrivateRoute>
-          }
-        />
-        <Route path={AppRoute.Offer} element={<OfferPage logged={logged} />} />
-        <Route path='*' element={<NotFoundPage />} />
+          element={<Layout authStatus={AuthorizationStatus.Auth} />}
+        >
+          <Route index element={<Navigate to='/paris' replace />} />
+          <Route path=':city' element={<MainPage />} />
+          <Route path={AppRoute.Login} element={<LoginPage />} />
+          <Route
+            path={AppRoute.Favorites}
+            element={
+              <PrivateRoute logged={logged}>
+                <FavoritesPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={AppRoute.Offer}
+            element={<OfferPage logged={logged} />}
+          />
+          <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
