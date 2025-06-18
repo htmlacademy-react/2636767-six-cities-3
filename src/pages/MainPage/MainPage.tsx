@@ -5,6 +5,8 @@ import Sorting from '../../components/sorting/Sorting';
 import { mockOffersList } from '../../mockData';
 import { useEffect, useState } from 'react';
 import { TOffer } from '../../types';
+import CityPlaces from '../../components/cityPlaces/CityPlaces';
+import NoPlaces from '../../components/noPlaces/NoPlaces';
 
 function MainPage() {
   const { city } = useParams<{ city: string }>();
@@ -20,25 +22,22 @@ function MainPage() {
   }, [city]);
 
   return (
-    <main className='page__main page__main--index'>
+    <main
+      className={`page__main page__main--index ${
+        !offers.length ? 'page__main--index-empty' : ''
+      }`}
+    >
       <h1 className='visually-hidden'>Cities</h1>
       <Navigation />
       <div className='cities'>
-        <div className='cities__places-container container'>
-          <section className='cities__places places'>
-            <h2 className='visually-hidden'>Places</h2>
-            <b className='places__found'>
-              {offers.length} places to stay in {offers[0]?.city.name}
-            </b>
-            <Sorting />
-            <div className='cities__places-list places__list tabs__content'>
-              {offers.map((offer) => (
-                <PlaceCard key={offer.id} offer={offer} />
-              ))}
-            </div>
-          </section>
+        <div
+          className={`cities__places-container container ${
+            !offers.length ? 'cities__places-container--empty' : ''
+          }`}
+        >
+          {offers.length ? <CityPlaces offers={offers} /> : <NoPlaces />}
           <div className='cities__right-section'>
-            <section className='cities__map map'></section>
+            {offers.length && <section className='cities__map map' />}
           </div>
         </div>
       </div>
