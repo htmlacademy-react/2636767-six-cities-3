@@ -1,42 +1,48 @@
-import Header from '../../components/header/Header';
+import { useParams } from 'react-router-dom';
 import Navigation from '../../components/navigation/Navigation';
 import PlaceCard from '../../components/placeCard/PlaceCard';
 import Sorting from '../../components/sorting/Sorting';
-import { cards } from '../../mockData';
+import { mockOffersList } from '../../mockData';
+import { useEffect, useState } from 'react';
+import { TOffer } from '../../types';
 
-interface MainPageProps {
-  logged: boolean;
-  offersCount: number;
-}
+function MainPage() {
+  const { city } = useParams<{ city: string }>();
 
-function MainPage({ logged, offersCount }: MainPageProps) {
+  const [offers, setOffers] = useState<TOffer[]>([]);
+
+  useEffect(() => {
+    const offersByCity = mockOffersList.filter(
+      (offer) => offer.city.name.toLowerCase() === city,
+    );
+
+    setOffers(offersByCity);
+  }, [city]);
+
   return (
-    <div className="page page--gray page--main">
-      <Header active logged={logged} />
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <Navigation />
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">
-                {offersCount} places to stay in Amsterdam
-              </b>
-              <Sorting />
-              <div className="cities__places-list places__list tabs__content">
-                {cards.map((card) => (
-                  <PlaceCard key={card.id} placeCard={card} />
-                ))}
-              </div>
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map"></section>
+    <main className='page__main page__main--index'>
+      <h1 className='visually-hidden'>Cities</h1>
+      <Navigation />
+      <div className='cities'>
+        <div className='cities__places-container container'>
+          <section className='cities__places places'>
+            <h2 className='visually-hidden'>Places</h2>
+            <b className='places__found'>
+              {offers.length} places to stay in {offers[0]?.city.name}
+            </b>
+            <Sorting />
+            <div className='cities__places-list places__list tabs__content'>
+              {offers.map((offer) => (
+                <PlaceCard key={offer.id} offer={offer} />
+              ))}
             </div>
+          </section>
+          <div className='cities__right-section'>
+            <section className='cities__map map'></section>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 

@@ -1,22 +1,37 @@
-import { Outlet } from 'react-router-dom';
-import Navigation from '../navigation/Navigation';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../header/Header';
+import { useEffect, useState } from 'react';
+import { AppRoute, AuthorizationStatus } from '../../const';
 
 interface LayoutProps {
-  logged: boolean;
+  authStatus: AuthorizationStatus;
 }
 
-function Layout({ logged }: LayoutProps) {
+function Layout({ authStatus }: LayoutProps) {
+  const { pathname } = useLocation();
+  
+  const [rootClassName, setRootClassname] = useState<string>('');
+  const [linkClassName, setLinkClassName] = useState('');
+  const [shouldRenderUser, setShouldRenderUser] = useState(true);
+
+  useEffect(() => {
+    if (pathname === AppRoute.Main) {
+      setRootClassname('page--gray page--main');
+      setLinkClassName('header__logo-link--active');
+    } else if (pathname === AppRoute.Login) {
+      setRootClassname('page--gray page--login');
+      setShouldRenderUser(false);
+    }
+  }, []);
+
   return (
-    <div className="page page--gray page--main">
-      <Header active logged={logged} />
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <Navigation />
-        <div className="cities">
-          <Outlet />
-        </div>
-      </main>
+    <div className={`page ${rootClassName}`}>
+      <Header
+        linkClassName={linkClassName}
+        authStatus={authStatus}
+        shouldRenderUser={shouldRenderUser}
+      />
+      <Outlet />
     </div>
   );
 }
