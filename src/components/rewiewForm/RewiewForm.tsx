@@ -17,31 +17,18 @@ function RewiewForm() {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log('rating', rating);
-    console.log('reviewText', reviewText);
-
     setRating(null);
     setReviewText('');
   };
 
   return (
-    <form
-      className='reviews__form form'
-      action='#'
-      method='post'
-      onSubmit={onSubmit}
-    >
+    <form className='reviews__form form' action='#' method='post' onSubmit={onSubmit}>
       <label className='reviews__label form__label' htmlFor='review'>
         Your review
       </label>
       <div className='reviews__rating-form form__rating'>
         {ratingStars.map((rate) => (
-          <Rating
-            key={rate.value}
-            onChange={onChangeRating}
-            rate={rate}
-            rating={rating}
-          />
+          <Rating key={rate.value} onChange={onChangeRating} rate={rate} rating={rating} />
         ))}
       </div>
       <textarea
@@ -54,9 +41,8 @@ function RewiewForm() {
       />
       <div className='reviews__button-wrapper'>
         <p className='reviews__help'>
-          To submit review please make sure to set{' '}
-          <span className='reviews__star'>rating</span> and describe your stay
-          with at least <b className='reviews__text-amount'>50 characters</b>.
+          To submit review please make sure to set <span className='reviews__star'>rating</span> and
+          describe your stay with at least <b className='reviews__text-amount'>50 characters</b>.
         </p>
         <button
           className='reviews__submit form__submit button'

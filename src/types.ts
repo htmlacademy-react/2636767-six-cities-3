@@ -1,4 +1,4 @@
-import { RatingValue } from "./const";
+import { RatingValue } from './const';
 
 export type TNavItem = {
   id: number;
@@ -32,10 +32,10 @@ export type TOffer = {
 
 export type TFavList = {
   city: string;
-  offers: TOffer[]
-}
+  offers: TOffer[];
+};
 
 export type TRating = {
   value: RatingValue;
-  labelTitle: string
-}
+  labelTitle: string;
+};

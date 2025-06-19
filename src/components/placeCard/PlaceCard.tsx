@@ -9,17 +9,14 @@ interface PlaceCardProps {
 function PlaceCard({ offer }: PlaceCardProps) {
   const [offerId, setOfferId] = useState<string>('');
 
-  const onActivePlace = (offer: TOffer) => {
-    setOfferId(offer.id);
+  const onActivePlace = (id: string) => {
+    setOfferId(id);
   };
 
   const offerLink = `/${offer.city.name.toLocaleLowerCase()}/offer/${offer.id}`;
 
   return (
-    <article
-      className='cities__card place-card'
-      onMouseEnter={() => onActivePlace(offer)}
-    >
+    <article className='cities__card place-card' onMouseEnter={() => onActivePlace(offer.id)}>
       {offer.isPremium && (
         <div className='place-card__mark'>
           <span>Premium</span>

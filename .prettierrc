@@ -3,5 +3,9 @@
   "useTabs": false,
   "singleQuote": true,
   "jsxSingleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "semi": true,
+  "quoteProps": "as-needed",
+  "printWidth": 100
 }

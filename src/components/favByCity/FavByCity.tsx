@@ -17,7 +17,7 @@ function FavByCity({ group }: FavByCityProps) {
       </div>
       <div className='favorites__places'>
         {group.offers.map((offer) => (
-          <FavPlaceCard offer={offer} />
+          <FavPlaceCard key={offer.id} offer={offer} />
         ))}
       </div>
     </li>

@@ -7,25 +7,21 @@ import OfferPage from '../../pages/OfferPage/OfferPage';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Layout from '../layout/Layout';
-import { useEffect, useState } from 'react';
 import { getGroupedFavList } from '../../pages/FavoritesPage/utils';
 import { favOffersList } from '../../mockData';
 import { TFavList } from '../../types';
 
 function App() {
-  const [groupedFavByCity, setGroupedFavByCity] = useState<TFavList[]>([]);
-  
-    useEffect(() => {
-      const groupedList = getGroupedFavList(favOffersList);
-  
-      setGroupedFavByCity(groupedList);
-    }, []);
+  const groupedFavByCity: TFavList[] = getGroupedFavList(favOffersList);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Layout authStatus={AuthorizationStatus.Auth} groupedFavList={groupedFavByCity} />}
+          element={
+            <Layout authStatus={AuthorizationStatus.Auth} groupedFavList={groupedFavByCity} />
+          }
         >
           <Route index element={<Navigate to='/paris' replace />} />
           <Route path=':city' element={<MainPage />} />

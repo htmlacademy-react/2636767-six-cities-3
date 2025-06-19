@@ -6,7 +6,7 @@ export enum AppRoute {
   Main = '/',
   Offer = '/:city/offer/:id',
   City = '/:city',
-  NotFound = '*'
+  NotFound = '*',
 }
 
 export enum AuthorizationStatus {
@@ -59,22 +59,22 @@ export enum RatingValue {
 export const ratingStars: TRating[] = [
   {
     value: RatingValue.Perfect,
-    labelTitle: 'perfect'
+    labelTitle: 'perfect',
   },
   {
     value: RatingValue.Good,
-    labelTitle: 'good'
+    labelTitle: 'good',
   },
   {
     value: RatingValue.NotBad,
-    labelTitle: 'not bad'
+    labelTitle: 'not bad',
   },
   {
     value: RatingValue.Badly,
-    labelTitle: 'badly'
+    labelTitle: 'badly',
   },
   {
     value: RatingValue.Terribly,
-    labelTitle: 'terribly'
-  }
-]
+    labelTitle: 'terribly',
+  },
+];
