@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TOffer } from '../../types';
+import { NavLink } from 'react-router-dom';
 
 interface PlaceCardProps {
   offer: TOffer;
@@ -10,10 +11,15 @@ function PlaceCard({ offer }: PlaceCardProps) {
 
   const onActivePlace = (offer: TOffer) => {
     setOfferId(offer.id);
-  }
+  };
+
+  const offerLink = `/${offer.city.name.toLocaleLowerCase()}/offer/${offer.id}`;
 
   return (
-    <article className='cities__card place-card' onMouseEnter={() => onActivePlace(offer)}>
+    <article
+      className='cities__card place-card'
+      onMouseEnter={() => onActivePlace(offer)}
+    >
       {offer.isPremium && (
         <div className='place-card__mark'>
           <span>Premium</span>
@@ -57,7 +63,7 @@ function PlaceCard({ offer }: PlaceCardProps) {
           </div>
         </div>
         <h2 className='place-card__name'>
-          <a href='#'>{offer.title}</a>
+          <NavLink to={offerLink}>{offer.title}</NavLink>
         </h2>
         <p className='place-card__type'>{offer.type}</p>
       </div>
