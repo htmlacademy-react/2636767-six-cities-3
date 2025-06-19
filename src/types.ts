@@ -4,16 +4,6 @@ export type TNavItem = {
   url: string;
 };
 
-export type TCard = {
-  id: number;
-  isPremium: boolean;
-  imageSrc: string;
-  price: string | number;
-  bookmarkActive: boolean;
-  description: string;
-  placeType: string;
-};
-
 export type TOffer = {
   id: string;
   title: string;
@@ -37,3 +27,8 @@ export type TOffer = {
   rating: number;
   previewImage: string;
 };
+
+export type TFavList = {
+  city: string;
+  offers: TOffer[]
+}

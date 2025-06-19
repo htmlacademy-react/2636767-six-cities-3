@@ -1,56 +1,6 @@
-import { TCard } from './types';
+import { TOffer } from './types';
 
-export const cards: TCard[] = [
-  {
-    id: 0,
-    isPremium: true,
-    imageSrc: 'img/apartment-01.jpg',
-    price: '120',
-    bookmarkActive: false,
-    description: 'Beautiful & luxurious apartment at great location',
-    placeType: 'Apartment',
-  },
-  {
-    id: 1,
-    isPremium: false,
-    imageSrc: 'img/room.jpg',
-    price: '80',
-    bookmarkActive: true,
-    description: 'Wood and stone place',
-    placeType: 'Room',
-  },
-  {
-    id: 2,
-    isPremium: false,
-    imageSrc: 'img/apartment-02.jpg',
-    price: '132',
-    bookmarkActive: false,
-    description: 'Canal View Prinsengracht',
-    placeType: 'Apartment',
-  },
-  {
-    id: 3,
-    isPremium: true,
-    imageSrc: 'img/apartment-03.jpg',
-    price: '180',
-    bookmarkActive: false,
-    description: 'Nice, cozy, warm big bed apartment',
-    placeType: 'Apartment',
-  },
-  {
-    id: 0,
-    isPremium: false,
-    imageSrc: 'img/room.jpg',
-    price: '80',
-    bookmarkActive: true,
-    description: 'Wood and stone place',
-    placeType: 'Room',
-  },
-];
-
-export const offersCount: number = 312;
-
-export const mockOffersList = [
+export const mockOffersList: TOffer[] = [
   {
     id: '02f7a320-a0dc-4fae-a6e5-ce5a941cb272',
     title: 'Nice, cozy, warm big bed apartment',
@@ -2810,5 +2760,205 @@ export const mockOffersList = [
     isFavorite: false,
     isPremium: false,
     rating: 2.6,
+  },
+];
+
+export const favOffersList: TOffer[] = [
+  {
+    id: 'ef79442e-d9a6-4e0f-8e72-92b70cdb892e',
+    title: 'Tile House',
+    type: 'room',
+    price: 182,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13,
+      },
+    },
+    location: {
+      latitude: 52.35754,
+      longitude: 4.9179759999999995,
+      zoom: 16,
+    },
+    isFavorite: false,
+    isPremium: false,
+    rating: 2.9,
+  },
+  {
+    id: '7fa6eda3-4193-44aa-8955-97beecacde1f',
+    title: 'Nice, cozy, warm big bed apartment',
+    type: 'house',
+    price: 217,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/13.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13,
+      },
+    },
+    location: {
+      latitude: 52.37854,
+      longitude: 4.894976,
+      zoom: 16,
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 4.6,
+  },
+  {
+    id: '9a03d23c-d51a-4120-bfcb-df7fa1276ca1',
+    title: 'The Joshua Tree House',
+    type: 'room',
+    price: 267,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 50.938361,
+        longitude: 6.959974,
+        zoom: 13,
+      },
+    },
+    location: {
+      latitude: 50.945361,
+      longitude: 6.962974,
+      zoom: 16,
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 3.7,
+  },
+  {
+    id: '20a98019-c99f-4016-888c-5ab101799038',
+    title: 'Canal View Prinsengracht',
+    type: 'house',
+    price: 858,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 50.938361,
+        longitude: 6.959974,
+        zoom: 13,
+      },
+    },
+    location: {
+      latitude: 50.917361,
+      longitude: 6.977974,
+      zoom: 16,
+    },
+    isFavorite: false,
+    isPremium: false,
+    rating: 3.8,
+  },
+  {
+    id: '9bce1e19-567a-432d-8571-9994832279b1',
+    title: 'Beautiful & luxurious apartment at great location',
+    type: 'house',
+    price: 863,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
+    city: {
+      name: 'Paris',
+      location: {
+        latitude: 48.85661,
+        longitude: 2.351499,
+        zoom: 13,
+      },
+    },
+    location: {
+      latitude: 48.87961000000001,
+      longitude: 2.353499,
+      zoom: 16,
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 2.2,
+  },
+];
+
+const fav = [
+  {
+    city: 'Paris',
+    offers: [
+      {
+        id: '9bce1e19-567a-432d-8571-9994832279b1',
+        title: 'Beautiful & luxurious apartment at great location',
+        type: 'house',
+        price: 863,
+        previewImage: 'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
+        city: {
+          name: 'Paris',
+          location: {
+            latitude: 48.85661,
+            longitude: 2.351499,
+            zoom: 13,
+          },
+        },
+        location: {
+          latitude: 48.87961000000001,
+          longitude: 2.353499,
+          zoom: 16,
+        },
+        isFavorite: false,
+        isPremium: true,
+        rating: 2.2,
+      },
+    ],
+  },
+  {
+    city: 'Cologne',
+    offers: [
+      {
+        id: '9a03d23c-d51a-4120-bfcb-df7fa1276ca1',
+        title: 'The Joshua Tree House',
+        type: 'room',
+        price: 267,
+        previewImage: 'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
+        city: {
+          name: 'Cologne',
+          location: {
+            latitude: 50.938361,
+            longitude: 6.959974,
+            zoom: 13,
+          },
+        },
+        location: {
+          latitude: 50.945361,
+          longitude: 6.962974,
+          zoom: 16,
+        },
+        isFavorite: false,
+        isPremium: true,
+        rating: 3.7,
+      },
+      {
+        id: '20a98019-c99f-4016-888c-5ab101799038',
+        title: 'Canal View Prinsengracht',
+        type: 'house',
+        price: 858,
+        previewImage: 'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
+        city: {
+          name: 'Cologne',
+          location: {
+            latitude: 50.938361,
+            longitude: 6.959974,
+            zoom: 13,
+          },
+        },
+        location: {
+          latitude: 50.917361,
+          longitude: 6.977974,
+          zoom: 16,
+        },
+        isFavorite: false,
+        isPremium: false,
+        rating: 3.8,
+      },
+    ],
   },
 ];

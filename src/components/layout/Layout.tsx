@@ -2,12 +2,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../header/Header';
 import { useEffect, useState } from 'react';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { TFavList } from '../../types';
 
 interface LayoutProps {
   authStatus: AuthorizationStatus;
+  groupedFavList: TFavList[]
 }
 
-function Layout({ authStatus }: LayoutProps) {
+function Layout({ authStatus, groupedFavList }: LayoutProps) {
   const { pathname } = useLocation();
   
   const [rootClassName, setRootClassname] = useState<string>('');
@@ -21,6 +23,8 @@ function Layout({ authStatus }: LayoutProps) {
     } else if (pathname === AppRoute.Login) {
       setRootClassname('page--gray page--login');
       setShouldRenderUser(false);
+    } else if (!groupedFavList.length) {
+      setRootClassname('page--favorites-empty')
     }
   }, []);
 
