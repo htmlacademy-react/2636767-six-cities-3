@@ -1,10 +1,10 @@
-import { TNavItem } from './types';
+import { TNavItem, TRating } from './types';
 
 export enum AppRoute {
   Favorites = '/favorites',
   Login = '/login',
   Main = '/',
-  Offer = 'offer/:id',
+  Offer = '/:city/offer/:id',
   City = '/:city',
   NotFound = '*'
 }
@@ -47,3 +47,34 @@ export const cities: TNavItem[] = [
     url: 'dusseldorf',
   },
 ];
+
+export enum RatingValue {
+  Terribly = 1,
+  Badly = 2,
+  NotBad = 3,
+  Good = 4,
+  Perfect = 5,
+}
+
+export const ratingStars: TRating[] = [
+  {
+    value: RatingValue.Perfect,
+    labelTitle: 'perfect'
+  },
+  {
+    value: RatingValue.Good,
+    labelTitle: 'good'
+  },
+  {
+    value: RatingValue.NotBad,
+    labelTitle: 'not bad'
+  },
+  {
+    value: RatingValue.Badly,
+    labelTitle: 'badly'
+  },
+  {
+    value: RatingValue.Terribly,
+    labelTitle: 'terribly'
+  }
+]
