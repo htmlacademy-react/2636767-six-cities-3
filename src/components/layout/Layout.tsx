@@ -1,22 +1,30 @@
-import { Outlet } from 'react-router-dom';
-import Navigation from '../navigation/Navigation';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../header/Header';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { TFavList } from '../../types';
+import { getLayoutOptions } from './utils';
 
 interface LayoutProps {
-  logged: boolean;
+  authStatus: AuthorizationStatus;
+  groupedFavList: TFavList[];
 }
 
-function Layout({ logged }: LayoutProps) {
+function Layout({ authStatus, groupedFavList }: LayoutProps) {
+  const { pathname } = useLocation();
+
+  const { linkClassName, rootClassName, shouldRenderUser } = getLayoutOptions(
+    pathname as AppRoute,
+    groupedFavList,
+  );
+
   return (
-    <div className="page page--gray page--main">
-      <Header active logged={logged} />
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <Navigation />
-        <div className="cities">
-          <Outlet />
-        </div>
-      </main>
+    <div className={`page ${rootClassName}`}>
+      <Header
+        linkClassName={linkClassName}
+        authStatus={authStatus}
+        shouldRenderUser={shouldRenderUser}
+      />
+      <Outlet />
     </div>
   );
 }

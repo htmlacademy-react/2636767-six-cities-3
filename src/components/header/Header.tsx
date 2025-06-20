@@ -1,18 +1,20 @@
+import { AuthorizationStatus } from '../../const';
 import HeaderLeft from './ui/HeaderLeft/HeaderLeft';
 import HeaderRight from './ui/HeaderRight/HeaderRight';
 
 interface HeaderProps {
-  active?: boolean;
-  logged: boolean;
+  authStatus: AuthorizationStatus;
+  linkClassName: string;
+  shouldRenderUser: boolean;
 }
 
-function Header({ active, logged }: HeaderProps) {
+function Header({authStatus, linkClassName, shouldRenderUser }: HeaderProps) {
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__wrapper">
-          <HeaderLeft active={active} />
-          <HeaderRight logged={logged} />
+    <header className='header'>
+      <div className='container'>
+        <div className='header__wrapper'>
+          <HeaderLeft linkClassName={linkClassName} />
+          {shouldRenderUser && <HeaderRight authStatus={authStatus} />}
         </div>
       </div>
     </header>

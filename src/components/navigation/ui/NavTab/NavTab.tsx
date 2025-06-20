@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { TNavItem } from '../../../../types';
 
 interface NavTabProps {
@@ -6,10 +7,14 @@ interface NavTabProps {
 
 function NavTab({ city }: NavTabProps) {
   return (
-    <li className="locations__item">
-      <a className={`locations__item-link ${ city.active ? 'tabs__item--active' : ''} tabs__item`} href="#">
+    <li className='locations__item'>
+      <NavLink
+        className={({ isActive }) =>
+          `locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
+        to={`/${city.url}`}
+      >
         <span>{city.name}</span>
-      </a>
+      </NavLink>
     </li>
   );
 }

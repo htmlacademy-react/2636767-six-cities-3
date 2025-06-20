@@ -1,42 +1,42 @@
-import Header from '../../components/header/Header';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import Navigation from '../../components/navigation/Navigation';
-import PlaceCard from '../../components/placeCard/PlaceCard';
-import Sorting from '../../components/sorting/Sorting';
-import { cards } from '../../mockData';
+import { TOffer } from '../../types';
+import CityPlaces from '../../components/cityPlaces/CityPlaces';
+import NoPlaces from '../../components/noPlaces/NoPlaces';
+import { mockOffersList } from '../../mockData/offers';
 
-interface MainPageProps {
-  logged: boolean;
-  offersCount: number;
-}
+function MainPage() {
+  const { city } = useParams<{ city: string }>();
 
-function MainPage({ logged, offersCount }: MainPageProps) {
+  const [offers, setOffers] = useState<TOffer[]>([]);
+
+  useEffect(() => {
+    const offersByCity = mockOffersList.filter((offer) => offer.city.name.toLowerCase() === city);
+
+    setOffers(offersByCity);
+  }, [city]);
+
   return (
-    <div className="page page--gray page--main">
-      <Header active logged={logged} />
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <Navigation />
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">
-                {offersCount} places to stay in Amsterdam
-              </b>
-              <Sorting />
-              <div className="cities__places-list places__list tabs__content">
-                {cards.map((card) => (
-                  <PlaceCard key={card.id} placeCard={card} />
-                ))}
-              </div>
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map"></section>
-            </div>
+    <main
+      className={`page__main page__main--index ${!offers.length ? 'page__main--index-empty' : ''}`}
+    >
+      <h1 className='visually-hidden'>Cities</h1>
+      <Navigation />
+      <div className='cities'>
+        <div
+          className={`cities__places-container container ${
+            !offers.length ? 'cities__places-container--empty' : ''
+          }`}
+        >
+          {offers.length ? <CityPlaces offers={offers} /> : <NoPlaces />}
+          <div className='cities__right-section'>
+            {offers.length && <section className='cities__map map' />}
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 
