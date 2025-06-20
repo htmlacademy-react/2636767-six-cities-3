@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
 import MainPage from '../../pages/MainPage/MainPage';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import LoginPage from '../../pages/LoginPage/LoginPage';
@@ -8,8 +9,8 @@ import PrivateRoute from '../privateRoute/PrivateRoute';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Layout from '../layout/Layout';
 import { getGroupedFavList } from '../../pages/FavoritesPage/utils';
-import { favOffersList } from '../../mockData';
 import { TFavList } from '../../types';
+import { favOffersList } from '../../mockData/favorites';
 
 function App() {
   const groupedFavByCity: TFavList[] = getGroupedFavList(favOffersList);
