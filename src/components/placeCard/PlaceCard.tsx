@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { TOffer } from '../../types';
 import { NavLink } from 'react-router-dom';
 
@@ -7,16 +6,10 @@ interface PlaceCardProps {
 }
 
 function PlaceCard({ offer }: PlaceCardProps) {
-  const [offerId, setOfferId] = useState<string>('');
-
-  const onActivePlace = (id: string) => {
-    setOfferId(id);
-  };
-
   const offerLink = `/${offer.city.name.toLocaleLowerCase()}/offer/${offer.id}`;
 
   return (
-    <article className='cities__card place-card' onMouseEnter={() => onActivePlace(offer.id)}>
+    <article className='cities__card place-card'>
       {offer.isPremium && (
         <div className='place-card__mark'>
           <span>Premium</span>
