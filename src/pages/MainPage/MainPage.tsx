@@ -6,17 +6,25 @@ import { TOffer } from '../../types';
 import CityPlaces from '../../components/cityPlaces/CityPlaces';
 import NoPlaces from '../../components/noPlaces/NoPlaces';
 import { mockOffersList } from '../../mockData/offers';
+import { cities } from '../../const';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function MainPage() {
   const { city } = useParams<{ city: string }>();
 
+  const currentCity = cities.find((cityFromList) => cityFromList.name.toLowerCase() === city);
+
+  if (!currentCity) {
+    return <NotFoundPage />
+  }
+
   const [offers, setOffers] = useState<TOffer[]>([]);
 
   useEffect(() => {
-    const offersByCity = mockOffersList.filter((offer) => offer.city.name.toLowerCase() === city);
+    const offersByCity = mockOffersList.filter((offer) => offer.city.name === currentCity.name);
 
     setOffers(offersByCity);
-  }, [city]);
+  }, [currentCity]);
 
   return (
     <main
