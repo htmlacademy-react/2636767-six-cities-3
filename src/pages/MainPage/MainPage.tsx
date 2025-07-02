@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Navigation from '../../components/navigation/Navigation';
-import { TOffer } from '../../types';
 import CityPlaces from '../../components/cityPlaces/CityPlaces';
 import NoPlaces from '../../components/noPlaces/NoPlaces';
 import { mockOffersList } from '../../mockData/offers';
@@ -15,16 +13,10 @@ function MainPage() {
   const currentCity = cities.find((cityFromList) => cityFromList.name.toLowerCase() === city);
 
   if (!currentCity) {
-    return <NotFoundPage />
+    return <NotFoundPage />;
   }
 
-  const [offers, setOffers] = useState<TOffer[]>([]);
-
-  useEffect(() => {
-    const offersByCity = mockOffersList.filter((offer) => offer.city.name === currentCity.name);
-
-    setOffers(offersByCity);
-  }, [currentCity]);
+  const offers = mockOffersList.filter((offer) => offer.city.name === currentCity.name);
 
   return (
     <main
