@@ -10,8 +10,7 @@ function NavTab({ city }: NavTabProps) {
     <li className='locations__item'>
       <NavLink
         className={({ isActive }) =>
-          `locations__item-link tabs__item ${isActive && 'tabs__item--active'}`
-        }
+          `locations__item-link tabs__item ${isActive && 'tabs__item--active'}`}
         to={`/${city.url}`}
       >
         <span>{city.name}</span>

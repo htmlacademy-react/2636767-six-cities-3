@@ -17,11 +17,11 @@ function MainPage() {
 
   const handleActiveHover = (id: string | null) => {
     setActiveHoverOfferId(id);
-  }
+  };
 
- if (!offers[0]?.city) {
-  return <NotFoundPage />
- }
+  if (!offers[0]?.city) {
+    return <NotFoundPage />;
+  }
 
   return (
     <main
@@ -35,9 +35,15 @@ function MainPage() {
             !offers.length ? 'cities__places-container--empty' : ''
           }`}
         >
-          {offers.length ? <CityPlaces offers={offers} handleActiveHover={handleActiveHover} /> : <NoPlaces />}
+          {offers.length ? (
+            <CityPlaces offers={offers} handleActiveHover={handleActiveHover} />
+          ) : (
+            <NoPlaces />
+          )}
           <div className='cities__right-section'>
-            {offers.length && <Map activeOfferId={activeHoverOfferId} city={offers[0].city} offers={offers}/>}
+            {offers.length && (
+              <Map activeOfferId={activeHoverOfferId} city={offers[0].city} offers={offers} />
+            )}
           </div>
         </div>
       </div>

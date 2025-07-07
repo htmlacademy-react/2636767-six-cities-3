@@ -13,26 +13,30 @@ interface MapProps {
 
 const Map = ({ activeOfferId, city, offers }: MapProps) => {
   const mapRef = useRef(null);
-  const map = useMap({location: city.location, mapRef});
+  const map = useMap({ location: city.location, mapRef });
   const markerLayer = useRef<LayerGroup>(leaflet.layerGroup());
 
   useEffect(() => {
     if (map) {
       map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
       markerLayer.current.addTo(map);
-      markerLayer.current.clearLayers()
+      markerLayer.current.clearLayers();
     }
-  }, [city, map])
+  }, [city, map]);
 
   useEffect(() => {
     if (map) {
       offers.forEach((offer) => {
-        leaflet.marker({
-            lat: offer.location.latitude,
-            lng: offer.location.longitude,
-          }, {
-            icon: offer.id === activeOfferId ? activeIcon : defaultIcon,
-          })
+        leaflet
+          .marker(
+            {
+              lat: offer.location.latitude,
+              lng: offer.location.longitude,
+            },
+            {
+              icon: offer.id === activeOfferId ? activeIcon : defaultIcon,
+            },
+          )
           .addTo(map);
       });
     }

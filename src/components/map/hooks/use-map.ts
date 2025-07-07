@@ -4,11 +4,11 @@ import leaflet, { Map } from 'leaflet';
 import { TILE_LAYER_ATTRIBUTION, TILE_LAYER_URL } from '../const';
 
 interface UseMapProps {
-    location: TLocation;
-    mapRef: React.RefObject<HTMLDivElement>
+  location: TLocation;
+  mapRef: React.RefObject<HTMLDivElement>;
 }
 
-export const useMap = ({location, mapRef}: UseMapProps) => {
+export const useMap = ({ location, mapRef }: UseMapProps) => {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderRef = useRef(false);
 
