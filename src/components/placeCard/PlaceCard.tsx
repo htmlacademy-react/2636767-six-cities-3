@@ -3,14 +3,19 @@ import { NavLink } from 'react-router-dom';
 
 interface PlaceCardProps {
   offer: TOffer;
+  handleActiveHover: (id: string | null) => void;
 }
 
-function PlaceCard({ offer }: PlaceCardProps) {
+function PlaceCard({ handleActiveHover, offer }: PlaceCardProps) {
   const offerLink = `/${offer.city.name.toLocaleLowerCase()}/offer/${offer.id}`;
 
   return (
     <NavLink to={offerLink}>
-      <article className='cities__card place-card'>
+      <article
+        className='cities__card place-card'
+        onMouseEnter={() => handleActiveHover(offer.id)}
+        onMouseLeave={() => handleActiveHover(null)}
+      >
         {offer.isPremium && (
           <div className='place-card__mark'>
             <span>Premium</span>
