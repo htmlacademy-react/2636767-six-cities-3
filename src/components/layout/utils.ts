@@ -1,4 +1,4 @@
-import { AppRoute } from '../../const';
+import { AppRoute, cities } from '../../const';
 import { TFavList } from '../../types';
 
 export const getLayoutOptions = (pathName: AppRoute, favList: TFavList[]) => {
@@ -6,7 +6,9 @@ export const getLayoutOptions = (pathName: AppRoute, favList: TFavList[]) => {
   let linkClassName = '';
   let shouldRenderUser = true;
 
-  if (pathName === AppRoute.Main) {
+  const isCityUrl = cities.some((city) => pathName.includes(city.url));
+
+  if (isCityUrl) {
     rootClassName = 'page--gray page--main';
     linkClassName = 'header__logo-link--active';
   } else if (pathName === AppRoute.Login) {

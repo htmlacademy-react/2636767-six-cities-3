@@ -25,7 +25,7 @@ function App() {
           }
         >
           <Route index element={<Navigate to='/paris' replace />} />
-          <Route path=':city' element={<MainPage />} />
+          <Route path={AppRoute.City} element={<MainPage />} />
           <Route path={AppRoute.Login} element={<LoginPage />} />
           <Route
             path={AppRoute.Favorites}

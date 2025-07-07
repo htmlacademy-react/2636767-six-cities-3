@@ -1,22 +1,27 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Navigation from '../../components/navigation/Navigation';
-import { TOffer } from '../../types';
 import CityPlaces from '../../components/cityPlaces/CityPlaces';
 import NoPlaces from '../../components/noPlaces/NoPlaces';
 import { mockOffersList } from '../../mockData/offers';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import { useState } from 'react';
+import Map from '../../components/map/Map';
 
 function MainPage() {
   const { city } = useParams<{ city: string }>();
 
-  const [offers, setOffers] = useState<TOffer[]>([]);
+  const offers = mockOffersList.filter((offer) => offer.city.name.toLowerCase() === city);
 
-  useEffect(() => {
-    const offersByCity = mockOffersList.filter((offer) => offer.city.name.toLowerCase() === city);
+  const [activeHoverOfferId, setActiveHoverOfferId] = useState<string | null>(null);
 
-    setOffers(offersByCity);
-  }, [city]);
+  const handleActiveHover = (id: string | null) => {
+    setActiveHoverOfferId(id);
+  };
+
+  if (!offers[0]?.city) {
+    return <NotFoundPage />;
+  }
 
   return (
     <main
@@ -30,9 +35,15 @@ function MainPage() {
             !offers.length ? 'cities__places-container--empty' : ''
           }`}
         >
-          {offers.length ? <CityPlaces offers={offers} /> : <NoPlaces />}
+          {offers.length ? (
+            <CityPlaces offers={offers} handleActiveHover={handleActiveHover} />
+          ) : (
+            <NoPlaces />
+          )}
           <div className='cities__right-section'>
-            {offers.length && <section className='cities__map map' />}
+            {offers.length && (
+              <Map activeOfferId={activeHoverOfferId} city={offers[0].city} offers={offers} />
+            )}
           </div>
         </div>
       </div>

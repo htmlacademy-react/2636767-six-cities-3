@@ -4,9 +4,10 @@ import { TOffer } from '../../types';
 
 interface CityPlacesProps {
   offers: TOffer[];
+  handleActiveHover: (id: string | null) => void;
 }
 
-function CityPlaces({ offers }: CityPlacesProps) {
+function CityPlaces({handleActiveHover, offers }: CityPlacesProps) {
   return (
     <section className='cities__places places'>
       <h2 className='visually-hidden'>Places</h2>
@@ -16,7 +17,7 @@ function CityPlaces({ offers }: CityPlacesProps) {
       <Sorting />
       <div className='cities__places-list places__list tabs__content'>
         {offers.map((offer) => (
-          <PlaceCard key={offer.id} offer={offer} />
+          <PlaceCard key={offer.id} handleActiveHover={handleActiveHover} offer={offer} />
         ))}
       </div>
     </section>
