@@ -4,12 +4,9 @@ export const formattedDate = (date: string) => {
     month: 'long',
     year: 'numeric',
   });
-
   return formatted;
 };
 
 export const dateTimeAttr = (date: string) => {
-  const newDate = new Date(date);
-
-  return newDate.toISOString().split('T')[0];
+  return date.split('T')[0];
 };
