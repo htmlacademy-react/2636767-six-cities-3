@@ -6,12 +6,13 @@ import { activeIcon, defaultIcon } from './const';
 import 'leaflet/dist/leaflet.css';
 
 interface MapProps {
+  blockName: string;
   city: TCity;
   offers: TOffer[];
   activeOfferId: string | null;
 }
 
-const Map = ({ activeOfferId, city, offers }: MapProps) => {
+const Map = ({blockName, activeOfferId, city, offers }: MapProps) => {
   const mapRef = useRef(null);
   const map = useMap({ location: city.location, mapRef });
   const markerLayer = useRef<LayerGroup>(leaflet.layerGroup());
@@ -42,7 +43,7 @@ const Map = ({ activeOfferId, city, offers }: MapProps) => {
     }
   }, [activeOfferId, map, offers]);
 
-  return <section className='cities__map map' ref={mapRef} />;
+  return <section className={`${blockName}__map map`} ref={mapRef} />;
 };
 
 export default Map;

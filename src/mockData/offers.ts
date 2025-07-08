@@ -2,7 +2,7 @@ import { TOffer } from '../types';
 
 export const mockOffersList: TOffer[] = [
   {
-    id: '02f7a320-a0dc-4fae-a6e5-ce5a941cb272',
+    id: '2e82ec07-c902-43f2-8fd1-a7f9774fc03f',
     title: 'Nice, cozy, warm big bed apartment',
     type: 'hotel',
     price: 446,

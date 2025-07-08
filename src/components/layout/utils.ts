@@ -6,9 +6,10 @@ export const getLayoutOptions = (pathName: AppRoute, favList: TFavList[]) => {
   let linkClassName = '';
   let shouldRenderUser = true;
 
-  const isCityUrl = cities.some((city) => pathName.includes(city.url));
+  const splitPath = pathName.split('/');
+  const isMainPage = cities.some((city) => splitPath.includes(city.url));
 
-  if (isCityUrl) {
+  if (isMainPage && splitPath.length <= 2) {
     rootClassName = 'page--gray page--main';
     linkClassName = 'header__logo-link--active';
   } else if (pathName === AppRoute.Login) {

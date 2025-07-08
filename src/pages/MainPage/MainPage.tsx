@@ -42,7 +42,7 @@ function MainPage() {
           )}
           <div className='cities__right-section'>
             {offers.length && (
-              <Map activeOfferId={activeHoverOfferId} city={offers[0].city} offers={offers} />
+              <Map activeOfferId={activeHoverOfferId} blockName='cities' city={offers[0].city} offers={offers} />
             )}
           </div>
         </div>

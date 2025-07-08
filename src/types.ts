@@ -39,3 +39,27 @@ export type TRating = {
   value: RatingValue;
   labelTitle: string;
 };
+
+export type THost = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+};
+
+export type TOfferSettings = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: TCity;
+  location: TLocation;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  description: string;
+  bedrooms: number;
+  goods: string[];
+  host: THost;
+  images: string[];
+  maxAdults: number;
+};
