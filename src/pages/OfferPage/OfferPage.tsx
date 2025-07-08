@@ -17,18 +17,18 @@ interface OfferPageProps {
 }
 
 function OfferPage({ authStatus }: OfferPageProps) {
-  const currentOfferFromList = mockOffersList.find((offer) => offer.id === mockOfferParis.id);
-  const nearOffersWithCurrent = [...nearOffers, currentOfferFromList];
-
   const [activeHoverId, setActiveHoverId] = useState<string | null>(mockOfferParis.id);
 
   const handleActiveHover = (id: string | null) => {
     setActiveHoverId(id);
   };
+  const currentOfferFromList = mockOffersList.find((offer) => offer.id === mockOfferParis.id);
 
   if (!currentOfferFromList) {
     return <NotFoundPage />;
   }
+
+  const nearOffersWithCurrent = [...nearOffers, currentOfferFromList];
 
   return (
     <main className='page__main page__main--offer'>
