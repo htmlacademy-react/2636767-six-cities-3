@@ -17,7 +17,7 @@ function CityPlaces({handleActiveHover, offers }: CityPlacesProps) {
       <Sorting />
       <div className='cities__places-list places__list tabs__content'>
         {offers.map((offer) => (
-          <PlaceCard key={offer.id} handleActiveHover={handleActiveHover} offer={offer} />
+          <PlaceCard key={offer.id} blockName='cities' handleActiveHover={handleActiveHover} offer={offer} />
         ))}
       </div>
     </section>

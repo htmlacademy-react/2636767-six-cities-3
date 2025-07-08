@@ -7,7 +7,7 @@ export const getLayoutOptions = (pathName: AppRoute, favList: TFavList[]) => {
   let shouldRenderUser = true;
 
   const splitPath = pathName.split('/');
-  const isMainPage = cities.some((city) => splitPath.includes(city.url))
+  const isMainPage = cities.some((city) => splitPath.includes(city.url));
 
   if (isMainPage && splitPath.length <= 2) {
     rootClassName = 'page--gray page--main';

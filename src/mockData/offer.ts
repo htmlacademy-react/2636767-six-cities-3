@@ -1,7 +1,7 @@
 import { TOfferSettings } from '../types';
 
 export const mockOfferParis: TOfferSettings = {
-  id: '16f6204f-091a-4016-b6fa-0b81e2b69c4d',
+  id: '2e82ec07-c902-43f2-8fd1-a7f9774fc03f',
   title: 'Penthouse, 4-5 rooms + 5 balconies',
   description:
     'Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.',

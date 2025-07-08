@@ -7,6 +7,4 @@ export const formattedDate = (date: string) => {
   return formatted;
 };
 
-export const dateTimeAttr = (date: string) => {
-  return date.split('T')[0];
-};
+export const dateTimeAttr = (date: string) => date.split('T')[0];

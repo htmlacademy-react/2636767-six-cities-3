@@ -1,9 +1,10 @@
 interface FavButtonProps {
   isFav: boolean;
   blockName: string;
+  small?: boolean;
 }
 
-function FavButton({ blockName, isFav }: FavButtonProps) {
+function FavButton({ small, blockName, isFav }: FavButtonProps) {
   return (
     <button
       className={`${blockName}__bookmark-button ${
@@ -11,7 +12,11 @@ function FavButton({ blockName, isFav }: FavButtonProps) {
       }  button`}
       type='button'
     >
-      <svg className={`${blockName}__bookmark-icon`} width='31' height='33'>
+      <svg
+        className={`${blockName}__bookmark-icon`}
+        width={small ? '18' : '31'}
+        height={small ? '19' : '33'}
+      >
         <use xlinkHref='#icon-bookmark'></use>
       </svg>
       <span className='visually-hidden'>{isFav ? 'In bookmarks' : 'To bookmarks'}</span>

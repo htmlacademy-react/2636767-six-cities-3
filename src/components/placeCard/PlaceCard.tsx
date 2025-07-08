@@ -3,26 +3,27 @@ import { NavLink } from 'react-router-dom';
 import FavButton from '../favButton/FavButton';
 
 interface PlaceCardProps {
+  blockName: string;
   offer: TOffer;
   handleActiveHover: (id: string | null) => void;
 }
 
-function PlaceCard({ handleActiveHover, offer }: PlaceCardProps) {
+function PlaceCard({blockName, handleActiveHover, offer }: PlaceCardProps) {
   const offerLink = `/${offer.city.name.toLocaleLowerCase()}/offer/${offer.id}`;
 
   return (
     <NavLink to={offerLink}>
       <article
-        className='cities__card place-card'
-        onMouseEnter={() => handleActiveHover(offer.id)}
-        onMouseLeave={() => handleActiveHover(null)}
+        className={`${blockName}__card place-card`}
+        onMouseEnter={() => handleActiveHover?.(offer.id)}
+        onMouseLeave={() => handleActiveHover?.(null)}
       >
         {offer.isPremium && (
           <div className='place-card__mark'>
             <span>Premium</span>
           </div>
         )}
-        <div className='cities__image-wrapper place-card__image-wrapper'>
+        <div className={`${blockName}__image-wrapper place-card__image-wrapper`}>
           <a href='#'>
             <img
               className='place-card__image'
@@ -39,7 +40,7 @@ function PlaceCard({ handleActiveHover, offer }: PlaceCardProps) {
               <b className='place-card__price-value'>&euro;{offer.price} </b>
               <span className='place-card__price-text'>&#47;&nbsp;night</span>
             </div>
-            <FavButton blockName='place-card' isFav={offer.isFavorite} />
+            <FavButton blockName='place-card' isFav={offer.isFavorite} small />
           </div>
           <div className='place-card__rating rating'>
             <div className='place-card__stars rating__stars'>
